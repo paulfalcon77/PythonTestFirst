@@ -8,3 +8,7 @@ def test_example(page: Page):
     page.goto("https://example.com")
     page.screenshot(path="example.png")
     assert "Example Domain" in page.locator("h1").inner_text()
+
+def test_example_two(page):
+    page.goto("https://example.com")
+    assert "Example Domain" in page.locator("h1").inner_text()
