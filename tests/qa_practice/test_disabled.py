@@ -8,4 +8,5 @@ def test_disabled(page: Page):
     result = page.locator("#result-text")
     expect(result).not_to_be_visible()
 
-    #pytest --headed tests/qa_practice/test_disabled.py
+
+#pytest --headed  tests/qa_practice/test_disabled.py
