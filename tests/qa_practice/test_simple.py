@@ -1,19 +1,18 @@
 import pytest
 from playwright.sync_api import Page, expect
+from pages.simple_page import SimplePage
 
 def test_simple_is(page: Page):
-    page.goto("https://www.qa-practice.com/elements/button/like_a_button")
-    simple_button = page.get_by_role('link', name='Simple button')
-    expect(simple_button).to_be_visible()
-    button = page.locator('.a-button')
-    expect(button).to_be_visible()
+    simple_page = SimplePage(page)
+    simple_page.open()
+    simple_page.simple_button_exists()
+
 
 def test_simple_clicked(page: Page):
-    page.goto("https://www.qa-practice.com/elements/button/like_a_button")
-    button = page.locator('.a-button')
-    button.click()
-    result = page.locator('#result')
-    expect(result).to_have_text('Submitted')
+    simple_page = SimplePage(page)
+    simple_page.open()
+    simple_page.click_simple_button()
+    simple_page.check_result_text_is_('Submitted')
 
 
 
